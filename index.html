@@ -6,7 +6,55 @@
     </head>
     <body>
         <script>
+           const possibilities = ["Rock", "Paper", "Scissors"];
+
+           function computerPlay() {
+               const random = possibilities[Math.floor(Math.random() * 3)];
+               return random; // Randomly return Rock, Paper, or Scissors
+           }
+           let computerSelection = computerPlay(); // Computer's choice
+           let playerSelection = prompt("Rock, Paper, or Scissors?");
+        
            
+           // Input player's choice. Convert player's choice to capitalized Rock, Paper, or Scissors
+
+
+           function playRound(playerSelection, computerSelection) {     
+            if (playerSelection == "Rock") {
+                if (computerSelection == "Rock") {
+                    return "The result is a tie!";
+                }
+                else if (computerSelection == "Paper") {
+                    return "You lose! Paper beats Rock."
+                }
+                else {
+                    return "You win! Rock beats scissors."
+                }
+            }
+            if (playerSelection == "Paper") {
+                if (computerSelection == "Paper") {
+                    return "The result is a tie!";
+                }
+                else if (computerSelection == "Rock") {
+                    return "You win! Paper beats Rock."
+                }
+                else {
+                    return "You lose! Scissors beat Paper."
+                }
+            }
+            if (playerSelection == "Scissors") {
+                if (computerSelection == "Scissors") {
+                    return "The result is a tie!";
+                }
+                else if (computerSelection == "Paper") {
+                    return "You win! Scissors beat Paper."
+                }
+                else {
+                    return "You lose! Rock beats Scissors."
+                }
+            }
+           }
+
         </script>
     </body>
 </html>
