@@ -12,6 +12,7 @@
                const random = possibilities[Math.floor(Math.random() * 3)];
                return random; 
            }
+           
            let computerSelection = computerPlay(); // Computer's choice
            let playerSelection; // Declare Player's choice
 
@@ -83,9 +84,7 @@
                 else if ((playerSelection == "Rock" && computerSelection == "Rock") || (playerSelection == "Scissors" && computerSelection == "Scissors") || (playerSelection == "Paper" && computerSelection == "Paper")) {
                     tieC++;
                 }
-                else {
-                    break;
-                } // Keeps track of wins and ties.
+                // Keeps track of wins and ties.
             }
             }
 
