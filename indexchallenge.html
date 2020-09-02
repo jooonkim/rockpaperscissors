@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Joon's Rock Paper Scissors</title>
+        <meta charset = "UTF-8">
+    </head>
+    <body>
+        <script>
+           const possibilities = ["Rock", "Paper", "Scissors"];
+
+           function computerPlay() { // Randomly return Rock, Paper, or Scissors
+               const random = possibilities[Math.floor(Math.random() * 3)];
+               return random; 
+           }
+           let computerSelection = computerPlay(); // Computer's choice
+           let playerSelection; // Declare Player's choice
+
+           function playRound(playerSelection, computerSelection) { // Play rounds.
+            if (playerSelection == "Rock") {
+                if (computerSelection == "Rock") {
+                    return "The result is a tie!";
+                }
+                else if (computerSelection == "Paper") {
+                    return "You lose! Paper beats Rock.";
+                }
+                else {
+                    return "You win! Rock beats scissors.";
+                }
+            }
+            else if (playerSelection == "Paper") {
+                if (computerSelection == "Paper") {
+                    return "The result is a tie!";
+                }
+                else if (computerSelection == "Rock") {
+                    return "You win! Paper beats Rock.";
+                }
+                else {
+                    return "You lose! Scissors beat Paper.";
+                }
+            }
+            else if (playerSelection == "Scissors") {
+                if (computerSelection == "Scissors") {
+                    return "The result is a tie!";
+                }
+                else if (computerSelection == "Paper") {
+                    return "You win! Scissors beat Paper.";
+                }
+                else {
+                    return "You lose! Rock beats Scissors.";
+                }
+            } 
+           }
+
+            let tieC = 0; // Set tie counter, win counter to 0
+            let winC = 0; 
+           
+           function game() {
+            for (let i = 0; i <= 4; i++) {
+                
+                while(true) { // Prompt for Player's choice, reprompt if incorrect.
+               playerSelection = prompt("Rock, Paper, or Scissors?"); 
+               if (playerSelection.toLowerCase() == "rock" || playerSelection.toLowerCase() == "paper" || playerSelection.toLowerCase() == "scissors") {
+                   break;
+               }
+               alert("Please enter either Rock, Paper, or Scissors.");
+               }
+           
+                if (playerSelection.toLowerCase() == "rock") { // Capitalize Rock, Paper, Scissors.
+                    playerSelection = "Rock";
+                }
+                else if (playerSelection.toLowerCase() == "paper") {
+                    playerSelection = "Paper";
+                }
+                else if (playerSelection.toLowerCase() == "scissors") {
+                    playerSelection = "Scissors";
+                }   
+                
+                console.log(playRound(playerSelection, computerSelection)) // Run playRound, print results.
+                
+                if ((playerSelection == "Rock" && computerSelection == "Scissors") || (playerSelection == "Scissors" && computerSelection == "Paper") || (playerSelection == "Paper" && computerSelection == "Rock")) {
+                    winC++;
+                } 
+                else if ((playerSelection == "Rock" && computerSelection == "Rock") || (playerSelection == "Scissors" && computerSelection == "Scissors") || (playerSelection == "Paper" && computerSelection == "Paper")) {
+                    tieC++;
+                }
+                else {
+                    break;
+                } // Keeps track of wins and ties.
+            }
+            }
+
+            game();
+
+            if ((tieC == 0 && winC > 2) || (tieC == 1 && winC > 2) || (tieC == 2 && winC > 1) || (tieC == 3 && winC > 1) || (tieC == 4 && winC > 0)) {
+                console.log("Player wins.");
+            }
+            else if ((tieC == 1 && winC == 2) || (tieC == 3 && winC == 1) || (tieC == 5)) {
+                console.log("Tie!");
+            }
+            else {
+                console.log("Computer wins.");
+            } // Prints results
+        </script>
+    </body>
+</html>
